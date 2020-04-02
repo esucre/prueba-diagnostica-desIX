@@ -1,10 +1,10 @@
 'use strict'
-
+//@author Emilio Sucre
 /*************Declaracion de Variables****************/
  const rl = require('readline-sync');
  let cadena;
  let identificador;
- let validacionCadena;
+ let instrucciones
 
 
 /*************Funciones****************/
@@ -63,15 +63,13 @@ function encodingHex(cadena) {
 
 
 //Instrucciones al usuario
- console.log
- (` Encoder de cadenas de texto, a continuacion los formatos soportados y su idetificador\n\
+ instrucciones =
+ ` Encoder de cadenas de texto, a continuacion los formatos soportados y su idetificador\n\
    - 0: Se ejecutará un encoding de tipo BASE64.\n\
    - 1: Se ejecutará un encoding de tipo ROT13.\n\
    - 2: Se ejecutará un encoding de tipo HEX.\n\
-   - 3: Se ejecutará un encoding de tipo BINARIO.`);
-
-
-
+   - 3: Se ejecutará un encoding de tipo BINARIO.`;
+console.log(instrucciones);
 //Se obtiene y se valida la cadena ingresada por el usuario
 do{
     cadena = rl.question('Cadena a encodear: ');
@@ -85,6 +83,7 @@ do{
 do{
     identificador = parseInt(rl.question('Ingresa el identificador para realizar el encode: '));
     if(!validarIdentificadorIngresado(identificador))
+    console.log(instrucciones);
         console.log('Debe elegir una de las opciones descritas anteriormente');
 }while(!validarIdentificadorIngresado(identificador));
  
