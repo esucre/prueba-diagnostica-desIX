@@ -1,0 +1,14 @@
+{
+  "name": "prueba-diagnostica",
+  "version": "1.0.0",
+  "description": "Prueba diagnostica de DesIX",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Emilio Sucre",
+  "license": "MIT",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
