@@ -40,6 +40,12 @@ function encodingBase64(cadena){
     return Base64;
 }
 
+//Funcion convertir cade a encoding ROT13
+function encodingROT13(cadena){
+    let rot13 = cadena.replace(/[a-zA-Z]/g,function(c){return String.fromCharCode((c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26);});
+    return rot13.toString();
+}
+
 //Funcion convertir cadena a encoding Binario
 function encodingBinary(cadena) {
     return (
@@ -51,7 +57,7 @@ function encodingBinary(cadena) {
     );
 }
 
-//Funcion convertir cadena a encoding Binario
+//Funcion convertir cadena a encoding Hex
 function encodingHex(cadena) {
     return (
       Array
@@ -82,9 +88,10 @@ do{
 //Se obtiene y se valida el identificador ingresado por el usuario
 do{
     identificador = parseInt(rl.question('Ingresa el identificador para realizar el encode: '));
-    if(!validarIdentificadorIngresado(identificador))
+    if(!validarIdentificadorIngresado(identificador)){
     console.log(instrucciones);
         console.log('Debe elegir una de las opciones descritas anteriormente');
+    }
 }while(!validarIdentificadorIngresado(identificador));
  
 
@@ -96,17 +103,19 @@ switch(identificador){
         console.log(mostrarResultadosCodificacion(cadena,cadenaBase64,'Base64'));
     break;
 
-    //Identificador 0: Convertir la cadena a ROT13
+    //Identificador 1: Convertir la cadena a ROT13
     case 1:
+    let cadenaROT13 = encodingROT13(cadena);
+        console.log(mostrarResultadosCodificacion(cadena,cadenaROT13,'ROT13'));
     break;
 
-    //Identificador 0: Convertir la cadena a HEX
+    //Identificador 2: Convertir la cadena a HEX
     case 2:
         let cadenaHex = encodingHex(cadena);
         console.log(mostrarResultadosCodificacion(cadena,cadenaHex,'Hex'));
     break;
 
-    //Identificador 0: Convertir la cadena a Binary
+    //Identificador 3: Convertir la cadena a Binary
     case 3:
         let cadenaBinary = encodingBinary(cadena);
         console.log(mostrarResultadosCodificacion(cadena,cadenaBinary,'Binario'));
